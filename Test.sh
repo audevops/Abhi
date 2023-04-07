@@ -3,3 +3,4 @@ who am i
 uname -a
 pwd
 echo "Abhi"
+df -kh
