@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Toy Store</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f7f7f7; }
+    header, footer { background-color: #222; color: white; padding: 15px; text-align: center; }
+    header img { height: 40px; vertical-align: middle; margin-right: 10px; }
+    nav { text-align: center; padding: 10px; background: #fff; }
+    nav button { margin: 5px; padding: 10px 20px; background: #008cba; color: white; border: none; cursor: pointer; border-radius: 5px; }
+    nav button:hover { background: #005f5f; }
+
+    .products { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
+    .product { background: white; margin: 10px; padding: 15px; border-radius: 8px; width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+    .product img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; }
+
+    .contact { background: #eee; padding: 20px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" alt="Logo" />
+  <span style="font-size: 1.5em;">Online Toy Store</span>
+</header>
+
+<nav>
+  <button onclick="showCategory('vehicles')">New_Launch</button>
+  <button onclick="showCategory('vehicles')">Vehicles</button>
+  <button onclick="showCategory('dolls')">Dolls</button>
+</nav>
+
+<section class="products" id="productList">
+  <!-- Products will be inserted here via JavaScript -->
+</section>
+
+<section class="contact">
+  <h3>Seller Information</h3>
+  <p><strong>Toy Galaxy Pty Ltd</strong></p>
+  <p>123 Toy Street, Melbourne, VIC 3000, Australia</p>
+  <p>Email: support@toysgalaxy.com | Phone: +61 3 9999 8888</p>
+  <p>ABN: 00 123 456 789</p>
+</section>
+
+<footer>
+  &copy; 2025 Online Toy Store. All rights reserved.
+</footer>
+
+<script>
+  const products = {
+    vehicles: [
+      {
+        name: "Cory Carson Fire Truck",
+        price: "$29.99",
+        image: "images/product_vehicle1.jpg"
+      },
+      {
+        name: "Recycling Truck",
+        price: "$34.99",
+        image: "images/product_vehicle2.jpg"
+      }
+    ],
+    dolls: [
+      {
+        name: "Pink Baby Doll",
+        price: "$24.99",
+        image: "images/product_doll1.jpg"
+      },
+      {
+        name: "Talking Cuddle Doll",
+        price: "$39.99",
+        image: "images/product_doll2.jpg"
+      }
+    ]
+  };
+
+  function showCategory(cat) {
+    const list = document.getElementById("productList");
+    list.innerHTML = "";
+    products[cat].forEach(p => {
+      list.innerHTML += `
+        <div class="product">
+          <img src="${p.image}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p>${p.price}</p>
+          <button>Add to Cart</button>
+        </div>`;
+    });
+  }
+
+  // Show default category
+  showCategory('vehicles');
+</script>
+
+</body>
+</html>
